@@ -1,0 +1,44 @@
+\begin{frame}
+  \begin{columns}[T]
+    \hspace{-1.5cm}\begin{column}{0.7\textwidth}
+      \begin{tikzpicture}
+        \begin{axis}[
+          my axis style,
+          xmin=-3, xmax=4,
+          ymin=-9, ymax=9,
+          zmin=-1, zmax=1,
+          view={0}{90},
+        ]
+          \addplot3[
+            contour gnuplot={
+              levels={0},
+              labels=false,
+              draw color=RNDSblue,
+              cmd={
+                gnuplot -c ./graphs/elliptic_curve.gp "./tmp/main_contourtmp1.table"
+              }
+            },
+            thick,
+            RNDSblue,
+            domain=-3:4,
+            y domain=-9:9
+          ] {y^2 - x^3 - 9};
+          \addplot[RNDSgreen, thick, domain=-3:4] {x + 3}; 
+          \addplot[dashed, ultra thick, RNDSgreen, no marks] coordinates {(0, 3) (0, -3)};
+          \node[label={180:{$A$}}, circle, draw, thick, color=RNDSgreen, fill=white, inner sep=2pt] at (axis cs:-2, 1) {};
+          \node[label={180:{$B$}}, circle, draw, thick, color=RNDSgreen, fill=white, inner sep=2pt] at (axis cs:3, 6) {};
+          \node[label={[yshift=0.5em]180:{$C'$}}, circle, draw, thick, color=RNDSgreen, fill=RNDSgreen, inner sep=2pt] at (axis cs:0, 3) {};
+          \node[label={[yshift=0.5em]180:{$C$}}, circle, draw, thick, color=RNDSgreen, fill=RNDSgreen, inner sep=2pt] at (axis cs:0, -3) {};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+    \hspace{-2.5cm}\begin{column}{0.3\textwidth}
+      \begin{enumerate}[label=\alph*),nosep ]
+        \item $ A + I = A $
+        \item $ A + (-A) = I $
+        \item $A + B = B + A$
+        \item $ (A + B) + C = A + (B + C) $
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}

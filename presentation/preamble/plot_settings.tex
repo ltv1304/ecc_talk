@@ -1,0 +1,37 @@
+% Стиль для точек (синее кольцо с белой заливкой)
+\pgfplotsset{
+    my point style/.style={
+        only marks,
+        mark=*,
+        mark options={
+            draw=RNDSgreen,         % цвет обводки
+            fill=white,        % цвет заливки
+            line width=1pt,    % толщина обводки
+            scale=0.7          % размер точки
+        }
+    },
+    my faded_point style/.style={
+        only marks,
+        mark=*,
+        mark options={
+            draw=gray!30,         % цвет обводки
+            fill=gray!30,        % цвет заливки
+            scale=0.7,          % размер точки
+            opacity=0.7,
+            line width=1pt    % толщина обводки
+        }
+    },
+    my axis style/.style={
+        grid=major,
+        width=\textwidth,
+        height=0.9\textheight,
+        clip=false, % Чтобы подписи не обрезались
+    },
+    my point_label plot/.style={
+        every node near coord/.append style={
+        font=\tiny, % Размер шрифта
+        text=RNDSblue,       % Цвет текста
+        anchor=south west % Позиционирование
+        }
+    }
+}

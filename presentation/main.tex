@@ -1,0 +1,122 @@
+% !TEX root = /workplace/presa2/main.tex
+
+\documentclass[aspectratio=169]{beamer}
+\usepackage{import}
+
+\import{preamble/}{packages.tex}
+\import{preamble/}{base.tex}
+\import{preamble/}{plot_settings.tex}
+
+\title[ECC]{Популярно о криптографии на \\[0.5em] эллиптических кривых}
+\author[RNDSOFT]{ltv1304@yandex.ru}
+\institute[]{RNDSOFT}
+\date[]{\today}
+
+\begin{document}
+  
+  \setbeamercolor{background canvas}{bg=RNDSgreen} 
+  \begin{frame}[plain]
+    \centering
+    \hspace*{-2cm}
+    \begin{minipage}{\dimexpr\textwidth+2cm\relax}
+      \centering
+      \titlepage
+    \end{minipage}
+  \end{frame}
+
+  \setbeamercolor{background canvas}{bg=black} 
+  \begin{frame}[plain]
+    \centering
+    \hspace*{-2cm}
+    \begin{minipage}{\dimexpr\textwidth+2cm\relax}
+      \centering
+      {\usebeamerfont{title}\textcolor{red}{\uppercase{дислеймер}}\par}
+      
+      \bigskip
+      \textcolor{white}{
+        Этот доклад родился как ответы на мои же вопросы при попытке разобраться в некоторых вопросах асимметричной криптографии. 
+        Доклад не претендует на научную верность или академическую точность, рассказываю как сам понял. 
+        \textcolor{red}{\uppercase{внимание!}} текст подготовлен с использованием ИИ, имейте это ввиду!!!
+      }
+    \end{minipage}
+  \end{frame}
+
+
+  \setbeamercolor{background canvas}{bg=white}
+  \section{Введение}
+    \input{intro/slacker}
+    \subsection{Конечные поля}
+      \begin{frame}
+        Применение конечных полей:
+        \begin{itemize}[label=---]  
+          \item криптография: ECC, AES, хеширование;
+          \item телекоммуникации: алгоритмы помехоустойчивого кодирования, быстрые алгоритмы свертки и фильтрации, FFT;
+          \item IT: ГПСЧ, алгоритмы хеширования, блокчейн, распределенные СУБД, алгоритмы сжатия.
+        \end{itemize}
+      \end{frame}
+    \subsection{Историческая справка}
+      \subsubsection{Алгебраические уравнения}
+          \input{intro/equations}
+      \subsubsection{Эварист Галуа}
+          \input{intro/galois}
+
+  \section{Основная часть}
+    \subsection{Конечные поля}
+      \subsubsection{Определение}
+        \input{main/fields/definition}
+        \input{main/fields/operations}
+        \input{main/fields/rules}
+      \subsubsection{Зачем они нужны}
+        \input{main/fields/purpose}
+    \subsection{Эллиптические кривые}
+      \subsubsection{Определение}
+        \input{main/curves/definition}
+      \subsubsection{Арифметика точек}
+        \input{main/curves/math_principles}
+        \input{main/curves/infinitely_point}
+        \input{main/curves/self_add}
+    \subsection{Скрещиваем}
+      \subsubsection{Определение}
+        \input{main/hybrid/line_ander_field}
+        \input{main/hybrid/curve_ander_field}
+      \subsubsection{Скалярное умножение}
+        \input{main/scalar_multiplication/graphically}
+        \input{main/scalar_multiplication/ander_field}
+    \subsection{Криптография}
+      \subsubsection{Определение}
+        \input{main/crypto/cryptographic_keys}
+        \input{main/crypto/cryptographic_curve_def}
+        \input{main/crypto/cryptographic_curve_comparison}
+      \subsubsection{Подписание и верификация}
+        \input{main/crypto/signature}
+
+  \section{Заключение}
+    \subsection{Квантовый компьютер}
+      \input{conclusion/quantum}
+    \subsection{АНБ}
+      \input{conclusion/nsa}
+    \subsection{Список литературы}
+    \begin{frame}{Список литературы}
+      \begin{thebibliography}{9}
+          \setbeamertemplate{bibliography item}[triangle]
+          
+          \bibitem{song} 
+          Джимми Сонг
+          \emph{Python для программирования криптовалют}. 
+          О'Рейли, 2020.
+          
+          \bibitem{PatientZero} 
+          PatientZero 
+          \emph{Доступно о криптографии на эллиптических кривых}. 
+          URL: https://habr.com/ru/articles/335906/
+          
+          \bibitem{grau} 
+          \emph{Визуализация эллиптических кривых в конечном поле}. 
+          URL: https://graui.de/code/elliptic2/
+        \end{thebibliography}
+      \end{frame}
+    \subsection{Спасибо за внимание!}
+      \begin{frame}
+        \centering{Спасибо за внимание!}
+      \end{frame}
+  \end{document}

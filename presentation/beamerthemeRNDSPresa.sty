@@ -1,0 +1,125 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeRNDSPresa}%
+[2025/03/22 RNDS tech talck theme]
+
+
+%% define colors
+% RNDSPresa colors
+\definecolor{UMdarkblue}{RGB}{0,28,61}
+\definecolor{UMwhite}{RGB}{255,255,255}
+\definecolor{UMorangered}{RGB}{232,78,16}
+\definecolor{UMlightblue}{RGB}{0,162,219}
+\definecolor{UMorange}{RGB}{243,148,37}
+\definecolor{UMred}{RGB}{174,11,18}
+
+\definecolor{RNDSgreen}{HTML}{11B69E}
+\definecolor{RNDSblue}{HTML}{117EB6}
+\definecolor{RNDSorange}{HTML}{B64911}
+\definecolor{RNDSyelow}{HTML}{B69C11}
+% other colors
+\definecolor{RNDSgreen}{HTML}{11B69E}
+
+\definecolor{lightgrey}{cmyk}{0.1,0,0,0.5}
+
+%% set colors for basic elements
+\setbeamercolor{title}{fg=white} 
+\setbeamercolor{subtitle}{fg=UMdarkblue}
+\setbeamercolor{author}{fg=UMwhite}
+\setbeamercolor{institute}{fg=UMwhite}
+\setbeamercolor{date}{fg=UMwhite}
+
+%% set colors for sidebar
+\setbeamercolor{title in sidebar}{fg=UMdarkblue}
+\setbeamercolor{author in sidebar}{fg=UMdarkblue}
+\setbeamercolor{section in sidebar}{fg=white}
+%\setbeamercolor{section in sidebar shaded}{fg=UMlightblue}
+\setbeamercolor{subsection in sidebar}{fg=white}
+%\setbeamercolor{subsection in sidebar shaded}{fg=UMlightblue}
+\setbeamercolor{subsubsection in sidebar}{fg=white}
+%\setbeamercolor{subsubsection in sidebar shaded}{fg=UMlightblue}
+\setbeamercolor{sidebar left}{bg=RNDSgreen}
+
+%% set colors for block statements
+% \setbeamercolor{block title}{fg=UMwhite, bg = UMorangered}
+% \setbeamercolor{block body}{fg=UMwhite, bg=UMorange}
+% \setbeamercolor{block title alerted}{fg=black, bg=UMlightblue}
+% \setbeamercolor{block body alerted}{fg=black, bg=UMlightblue!40!white}
+% \setbeamercolor{block title example}{fg=black, bg=UMlightblue}
+% \setbeamercolor{block body example}{fg=black, bg=UMlightblue!40!white}
+
+\setbeamercolor{section in toc}{fg=white}
+\setbeamercolor{subsection in toc}{fg=white}
+
+
+% set bold font for titles
+
+\newfontfamily{\motserrat}{Montserrat}[
+    Path=./static/fonts/montserrat/,
+    Scale=1,
+    Extension = .ttf,
+    UprightFont=*-Regular,
+    BoldFont=*-Bold,
+    ItalicFont=*-Italic,
+    BoldItalicFont=*-BoldItalic
+]
+
+
+% \setmainfont{Montserrat}
+\setsansfont{Montserrat}
+\usefonttheme[onlymath]{serif}
+
+
+\setbeamerfont{section in toc}{size=\footnotesize}
+\setbeamerfont{subsection in toc}{size=\footnotesize}
+
+\setbeamerfont{title}{family=\motserrat, series=\bfseries, size=\LARGE}
+\setbeamerfont{normal text}{family=\motserrat, size=\normalsize}
+\setbeamerfont{subtitle}{series=\bfseries}
+\setbeamerfont{frametitle}{series=\bfseries}
+\setbeamerfont{title in sidebar}{family=\motserrat, series=\bfseries}
+\setbeamerfont{author in sidebar}{family=\motserrat, series=\bfseries}
+\setbeamerfont{section in sidebar}{family=\motserrat, series=\bfseries}
+\setbeamerfont{subsection in sidebar}{family=\motserrat, series=\bfseries}
+\setbeamerfont{subsubsection in sidebar}{family=\motserrat, series=\bfseries}
+
+%% set theme
+\useinnertheme{circles}
+\useoutertheme{sidebar}
+\let\emph\textbf
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamertemplate{headline}{}
+
+%% define layout
+\newlength{\sidebarwidth}
+
+% define navigation bar
+
+\setbeamertemplate{sidebar left}{
+\beamer@tempdim=\beamer@sidebarwidth
+{\usebeamerfont{title in sidebar}
+  \vskip1.5em
+  \hskip3pt
+  \usebeamercolor[fg]{title in sidebar}
+  \insertshorttitle[width=\beamer@tempdim,respectlinebreaks]\par
+  \vskip1.25em
+}
+{
+  \hskip1pt 
+  \usebeamercolor[fg]{author in sidebar}
+  \usebeamerfont{author in sidebar}
+  \insertshortauthor[width=\beamer@tempdim,respectlinebreaks]\par
+  \vskip1.25em
+}
+\insertverticalnavigation{\beamer@sidebarwidth}
+\vfill
+}
+% store width of sidebar
+\setlength{\sidebarwidth}{\beamer@sidebarwidth}
+
+\setbeamertemplate{title page}{%
+  \centering
+  {\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle}
+}
+
+\setbeamersize{sidebar width left=2cm}

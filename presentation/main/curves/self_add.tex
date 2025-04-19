@@ -1,0 +1,31 @@
+\begin{frame}
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}[
+      my axis style,
+      xmin=-3, xmax=4,
+      ymin=-9, ymax=9,
+      zmin=-1, zmax=1,
+      view={0}{90},
+      width=0.8\textwidth
+    ]
+      \addplot3[
+        contour gnuplot={
+          levels={0},
+          labels=false,
+          draw color=RNDSblue,
+          cmd={
+            gnuplot -c ./graphs/elliptic_curve.gp "./tmp/main_contourtmp2.table"
+          }
+        },
+        thick,
+        RNDSblue,
+        domain=-3:4,
+        y domain=-9:9
+      ] {y^2 - x^3 - 9};
+
+      \addplot[domain=-3:4, RNDSgreen, ultra thick] {0.948*x + 3.835};
+      \node[label={[yshift=0.5em]180:{$C$}}, circle, draw, thick, color=RNDSgreen, fill=RNDSgreen, inner sep=2pt] at (axis cs:-1.28571,2.61589) {};
+    \end{axis}
+  \end{tikzpicture}
+\end{frame}

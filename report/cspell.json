@@ -1,0 +1,33 @@
+{
+  "version": "0.2",
+  "language": "en,ru",
+  "dictionaryDefinitions": [
+    {
+      "name": "scientists_names",
+      "path": "locale/scientists_names.txt",
+      "addWords": true
+    },
+    {
+      "name": "acronym_en",
+      "path": "locale/acronym_en.txt",
+      "addWords": true
+    },
+    {
+      "name": "acronym_ru",
+      "path": "locale/acronym_ru.txt",
+      "addWords": true
+    },
+    {
+      "name": "code",
+      "path": "locale/code.txt",
+      "addWords": true
+    }
+  ],
+  "dictionaries": [
+    "scientists_names",
+    "acronym_ru",
+    "acronym_en",
+    "code",
+    "markdown",
+  ],
+}

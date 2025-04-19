@@ -1,0 +1,41 @@
+\begin{frame}
+  \begin{columns}[T]
+    \hspace{-1.5cm}\begin{column}{0.7\textwidth}
+      \begin{tikzpicture}
+        \begin{axis}[
+          my axis style,
+          xmin=-3, xmax=4,
+          ymin=-9, ymax=9,
+          zmin=-1, zmax=1,
+          view={0}{90},
+        ]
+          \addplot3[
+            contour gnuplot={
+              levels={0},
+              labels=false,
+              draw color=RNDSblue,
+              cmd={
+                gnuplot -c ./graphs/elliptic_curve.gp "./tmp/main_contourtmp4.table"
+              }
+            },
+            thick,
+            blue,
+            domain=-3:4,
+            y domain=-9:9
+          ] {y^2 - x^3 - 9};
+          \node[label={[yshift=0.5em]180:{$G$}}, circle, draw, thick, color=RNDSgreen, fill=RNDSgreen, inner sep=2pt] at (axis cs:-1.28571, 2.61589) {};
+          \node[label={[yshift=0.5em]180:{$2G$}}, circle, draw, thick, color=RNDSgreen, fill=RNDSgreen, inner sep=2pt] at (axis cs:3.463, -7.118) {};
+          \node[label={[yshift=0.5em]180:{$3G$}}, circle, draw, thick, color=RNDSgreen, fill=RNDSgreen, inner sep=2pt] at (axis cs:2, 4.11977) {};
+          \addplot[dashed, ultra thick, RNDSgreen, no marks] coordinates {(3.463, 7.118) (3.463, -7.118)};
+          \addplot[dashed, ultra thick, RNDSyelow, no marks] coordinates {(2, -4.11977) (2, 4.11977)};
+          \addplot[domain=-3:4, RNDSgreen, ultra thick] {0.948*x + 3.835};
+          \addplot[domain=-2:4, RNDSyelow, ultra thick] {-2.050*x - 0.020};
+          \addplot[domain=-3:4, RNDSorange, thick] {0.4577*x + 3.2044};
+        \end{axis}
+      \end{tikzpicture}
+    \end{column}
+    \hspace{-2.5cm}\begin{column}{0.3\textwidth}
+        $ \{ G, 2G, 3G, 4G, ..., nG \} $
+    \end{column}
+  \end{columns}
+\end{frame}

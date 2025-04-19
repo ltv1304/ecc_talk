@@ -1,0 +1,60 @@
+\begin{frame}
+  \[ y^2 = x^3+ax+b - \text{эллиптическая кривая} \]
+  \[ x^2/a^2+y^2/b^2 = 1 - \text{эллипс} \]
+  \centering  
+  \begin{tikzpicture}
+    \begin{axis}[
+      width=5cm, % Ширина графика
+      height=6cm, % Высота графика
+      domain=-5:5, % Диапазон по оси X
+      y domain=-5:5, % Диапазон по оси Y
+      samples=50, % Количество точек для построения
+      smooth, % Сглаживание графика
+      grid=both, % Включаем сетку
+      enlargelimits=true, % Расширяем границы графика
+      view={0}{90}, % Вид сверху (2D)
+      name=plot1 % Имя для первого графика
+  ]
+  \addplot3[
+    contour gnuplot={
+        levels={0},
+        labels=false,
+        draw color=RNDSblue,
+        cmd={
+          gnuplot -c ./graphs/elliptic_curve.gp "./tmp/main_contourtmp0.table"
+        }
+    },
+    thick,
+    RNDSblue,
+    domain=-3:4,
+    y domain=-9:9
+] {y^2 - x^3 - 9};
+ \legend{secp256k1} % Легенда
+\end{axis}
+  
+    % Второй график: повёрнутый эллипс
+    \begin{axis}[
+      width=5cm, % Ширина графика
+      height=6cm, % Высота графика
+      domain=-5:5, % Диапазон по оси X
+      y domain=-5:5, % Диапазон по оси Y
+      samples=50, % Количество точек для построения
+      smooth, % Сглаживание графика
+      grid=both, % Включаем сетку
+      enlargelimits=true, % Расширяем границы графика
+      view={0}{90}, % Вид сверху (2D)
+      at={(plot1.right of north east)}, % Позиция второго графика
+      anchor=left of north west % Привязка
+    ]
+      % Рисуем повёрнутый эллипс
+      \addplot[
+        red,
+        thick,
+        domain=0:360,
+        samples=100,
+        variable=\t,
+      ] ({cos(45) * 2*cos(t) + sin(45) * sin(t)}, {-sin(45) * 2*cos(t) + cos(45) * sin(t)});
+      \legend{Это эллипс} % Легенда
+    \end{axis}
+  \end{tikzpicture}
+  \end{frame}

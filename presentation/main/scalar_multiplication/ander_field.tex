@@ -1,0 +1,48 @@
+\begin{frame}
+  \begin{columns}
+  \begin{column}{0.8\textwidth}
+      \centering
+      \begin{tikzpicture}
+
+\begin{axis}[
+  my axis style,
+  xmin=0, xmax=103,
+  ymin=0, ymax=103,
+]
+
+\addplot[my faded_point style, skip coords between index={108}{115}] table {./graphs/curve_ander_field.dat};
+
+\addplot[
+  my point style,
+  my point_label plot,
+  point meta=explicit symbolic,  % Разрешаем метаданные для подписей
+  nodes near coords=\pgfmathparse{int(\coordindex+2)}\pgfmathresult,
+  ] table {./graphs/group.dat};
+
+\node[label={[font=\bfseries, yshift=0.5em, text=RNDSblue]180:{G}}, circle, draw=RNDSblue, fill=RNDSblue, thick, inner sep=2pt, minimum size=2pt] at (axis cs:100, 17) {};
+
+\end{axis}
+\end{tikzpicture}
+  \end{column}
+  \begin{column}{0.3\textwidth}
+      $G = (100,17)$
+      \[
+      \begin{array}{r|l}
+          G2 & (78,55) \\
+          G3 & (8,2) \\
+          G4 & (59,2) \\
+          G5 & (7,12) \\
+          G6 & (22,47) \\
+          G7 & (36,101) \\
+          G8 & (85,47) \\
+          G9 & (25,39) \\
+          G10 & (38,17) \\
+          G11 & (38,86) \\
+          G12 & (17,39) \\
+          *** & ***     \\
+      G36 & (100,86) \\
+      \end{array}
+      \]
+  \end{column}
+\end{columns}
+\end{frame}
