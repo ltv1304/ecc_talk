@@ -1,18 +1,11 @@
-#-------------------------------------------------------------------------------------------------------------
-# Copyright (c) Microsoft Corporation. All rights reserved.
-# Licensed under the MIT License. See https://go.microsoft.com/fwlink/?linkid=2090316 for license information.
-#-------------------------------------------------------------------------------------------------------------
-
 FROM ubuntu:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
     && apt-get -y install --no-install-recommends apt-utils 2>&1
 
-# Verify git and needed tools are installed
 RUN apt-get install --no-install-recommends -y git procps
 
-# Install Tex Live
 RUN apt-get update && apt-get -y upgrade \
     && apt-get -y install --no-install-recommends \
     texlive-latex-base \
